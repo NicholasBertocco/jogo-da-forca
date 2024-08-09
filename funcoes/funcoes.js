@@ -23,15 +23,25 @@ function atualizaPalavraOculta (palavraOculta,letraDigitada,palavraEscolhida){
     let arrayPalavraOculta = palavraOculta.split("");
     // loop para atualizar a palavra 
     for(let i = 0; i<palavraEscolhida.length; i++){
-        let letraOn = true
         if (letraDigitada === palavraEscolhida[i]){
-            arrayPalavraOculta[i] = letraDigitada
-            
+            arrayPalavraOculta[i] = letraDigitada      
         }
+        
     }return arrayPalavraOculta.join("")
 }
-
-
+//verifica se a letra está na palavra
+function verificaLetraNapalavra (palavra, letra){
+    for(let i = 0; i < palavra.length; i++){
+        if (palavra[i] === letra){
+            return true;
+        }
+    }
+}
+function verificaPalavra (palavraAtualizada, palavra){
+    if (palavraAtualizada === palavra){
+        return true
+    }
+}
 
 //Verificando a se a letra é válida
 function verificaLetra (letraDigitada){
@@ -40,18 +50,17 @@ function verificaLetra (letraDigitada){
     }else{
         return false
     }
-
-
 }
+
 function exibirMensagemFimdeJogo(statusGame, palavraEscolhida){
     switch(statusGame){
         case 'ganhou':
-            console.log('Parabéns, vocêganhou, a fruta foi '+ palavraEscolhida+'!');
+            console.log('\nParabéns, você ganhou, a fruta foi '+ palavraEscolhida+'!');
             break;
         case 'perdeu':
-            console.log('Você é burro demais vai estudar.');
+            console.log('\nVocê é burro demais vai estudar.');
             break;
     }
 }
 
-export {palavraEscolhida, ocultarPalavra, atualizaPalavraOculta, verificaLetra,exibirMensagemFimdeJogo}
+export {verificaPalavra, palavraEscolhida, ocultarPalavra,verificaLetraNapalavra, atualizaPalavraOculta, verificaLetra,exibirMensagemFimdeJogo}
