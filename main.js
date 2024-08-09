@@ -10,16 +10,19 @@ let palavraOculta = ocultarPalavra(palavra);
 let statusGame = 'andamento';
 let palavraAtualizada
 
+//Loop do jogo
 while(statusGame === 'andamento'){
     console.log('\nVocê tem '+chances+' tentativas!');
     console.log('Descubra a fruta com '+palavra.length+' letras!\n');
     console.log (`Fruta : ${palavraOculta}`)
     const letra = input.question('Digite uma letra: ').toLowerCase();
-
+    //verificando entrada do usuário se é válida e se esta na palavra
     if (verificaLetra(letra)){
       if (verificaLetraNapalavra(palavra,letra)){
+        //atualizando palavra
          palavraAtualizada = atualizaPalavraOculta(palavraOculta,letra,palavra);
          palavraOculta = palavraAtualizada;
+         //verificando palavra
          if(verificaPalavra(palavraAtualizada,palavra)){
                statusGame = 'ganhou';
          }
